@@ -1,105 +1,65 @@
-# What is SPA Vite Template
+# Notify Hub System
 
-This project provides a basic dev setup intended for `Single Page Application` (SPA) development. It contains already configured tools and libraries providing a quick and seamless start, making the Developer Experience (DX) and scalability of your project easily manageable. It also shows a practical application of selected tools and practices in a form of a demo app.
+Welcome to the **Notify Hub System**, a notification management platform that allows you to send messages to users across different channels (SMS, Email, Push Notifications) based on their subscriptions. This system is built with a Clojure backend and a React.js frontend powered by Vite.js.
 
-# Template versions
+## Features
 
-Bearing in mind flexibility and openness to various tools and preferences, this template allows you to adjust your workflow to your needs, assuring best practices and following opinionated frontend/React trends at the same time.
+- Submit notifications for different categories (Sports, Finance, Movies).
+- Users are pre-populated with preferences for categories and channels.
+- Simulate sending notifications via SMS, Email, or Push Notifications.
+- View a log of sent notifications, including details and statuses.
 
-Thus, the template provides two different versions, differing in complexity and spectrum of solved problems.
+## Project Structure
 
-## Basic version - `basic`
+![alt text](folder-structure.png)
 
-The most basic config of the dev environment. It provides seamless DX and assures a legible and consistent codebase.
+## Installation
 
-### When to use
+### Backend (Clojure)
 
-This version is free of any libraries. If the `core` version doesn't match your preferences and expectations, the `basic` version will be perfect as a basis for your personalized project setup.
+1. Navigate to the `backend/` folder:
 
-### Key features
+```bash
+cd backend
 
-- Dev environment based on [ViteJS 5](https://vitejs.dev/) toolkit.
-- Testing environment based on [Vitest](https://vitest.dev/) and [Storybook 8](https://storybook.js.org/).
-- Static code analysis: eslint, prettier, husky.
-- TypeScript support.
-- [Devcontainer](https://code.visualstudio.com/docs/devcontainers/containers) config for VS Code.
-- [PNPM](https://pnpm.io/) as a package manager.
-- CI setup (automate tests, build, deploy draft) with [GitHub Actions](https://docs.github.com/en/actions).
-
-## Extended version - `core`
-
-The extension of the `basic` version. It contains already configured tools and libraries that aim to solve the most basic and typical problems existing in a modern frontend application (SPA).
-
-### When to use
-
-If configured tools and overall setup meet your requirements, you should definitely choose this version as the starting point for your project.
-
-### Key features
-
-- Everything that's included in the `basic` version.
-- Simple, modular, and accessible components based on [Chakra UI](https://chakra-ui.com/).
-- Data fetching and external state synchronization based on [React Query](https://tanstack.com/query/v4/).
-- Routing based on [React Router 6](https://reactrouter.com/en/main/start/overview).
-- ~~Date formatting based on [DayJS](https://day.js.org/).~~
-- Formatting tools for numbers, monetary values, and dates (easily extendable with any date library like [DayJS](https://day.js.org/)).
-- API mocking with [MSW](https://mswjs.io/).
-
-# Guideline
-
-## How to use
-
-_You may simply download a ZIP Directory and start with a clean git repository using a command_ `git init`...
-
-... or clone this repo through git CLI.
-
-```
-git clone -b basic --depth 1 --single-branch https://github.com/bartstc/spa-vite-template.git [project_name]
+lein run
 ```
 
-```
-git clone -b core --depth 1 --single-branch https://github.com/bartstc/spa-vite-template.git [project_name]
-```
+### Frontend (React with Vite.js)
 
-Link cloned repo with your own remote repository.
+2. Navigate to the frontend/ folder:
 
-```
-git remote set-url origin git@github.com:username/project.git
-```
+```bash
+cd frontend
 
-Create and push your own branch designated for development.
-
-```
-git checkout -b [branch_name]
+pnpm install
+pnpm dev
 ```
 
+### Running Both Backend and Frontend
+
+You can start both the backend and frontend concurrently by running the start.sh script:
+
 ```
-git push --set-upstream origin [branch_name]
+./start.sh
 ```
 
-Set your newly created and pushed branch as default. You may do this in `Settings` -> `Branches` -> `Default Branch`.
+This will start the backend (Clojure) and the frontend (React) simultaneously.
 
-## Starting the dev environment
+### Using the Application
 
-It's recommended to run the dev server and tests in a docker container. Containerized environment assures compatibility and cohesion regarding launching and developing your project. Because of that, you don't need to worry about unexpected errors or undesired mismatches of locally installed dependencies e. g. Node or Pnpm.
+- Message Submission: Go to the homepage, then click on `Get Started` , choose a category (Sports, Finance, Movies), and submit a notification message.
+- View Logs: Navigate to the "Notification History" section to see the logs of all sent notifications.
 
-If you are using [VS Code](https://code.visualstudio.com/) as your IDE, I personally recommend using already configured in this template [devcontainer env](https://code.visualstudio.com/docs/devcontainers/containers).
+### Requirements
 
-Learn more about using this template in practice below.
+- Node.js for the frontend.
+- Leiningen or deps.edn for the Clojure backend.
+- Datomic Free (optional) for a local database or use in-memory mode for simplicity.
 
-## Basic commands
+### Notes for Evaluators
 
-| Command                | Description                                                                                                                                                |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm dev`             | Runs dev server with the HMR locally on port `5173`                                                                                                        |
-| `pnpm build`           | Builds optimized app package                                                                                                                               |
-| `pnpm test`            | Runs unit tests                                                                                                                                            |
-| `pnpm storybook`       | Runs a Storybook locally on port `6006`                                                                                                                    |
-| `pnpm test-storybook`  | Runs integration tests (requires a running Storybook on port `6006` - more info [here](https://storybook.js.org/blog/interaction-testing-with-storybook/)) |
-| `pnpm build-storybook` | Builds static app with [a Storybook's content](https://storybook.js.org/docs/react/sharing/publish-storybook)                                              |
+If you're evaluating this project:
 
-# Contributing
-
-It is publicly open for any contribution. Bugfixes, new features, and extra modules are welcome.
-
-- To contribute to code: Fork the repo, push your changes to your fork, and submit a pull request.
-- To report a bug: If something does not work, please report it using [GitHub Issues](https://github.com/bartstc/spa-vite-template/issues).
+- Make sure to run the backend and frontend as described above.
+- The project is designed to use an in-memory database, so no setup for the database is required.
