@@ -1,0 +1,52 @@
+{:users [{:id 1
+          :email "alex.brown@example.com"
+          :username "alexb"
+          :name {:firstname "Alex"
+                 :lastname "Brown"}
+          :phone "1234567890"
+          :subscriptions [{:name "SPORTS"}
+                          {:name "FINANCE"}
+                          {:name "MOVIES"}]
+          :channels [{:name "SMS"}
+                     {:name "EMAIL"}
+                     {:name "PUSH"}]}
+
+         {:id 2
+          :email "sophia.johnson@example.com"
+          :username "sophiaj"
+          :name {:firstname "Sophia"
+                 :lastname "Johnson"}
+          :phone "9876543210"
+          :subscriptions [{:name "MOVIES"}]
+          :channels [{:name "EMAIL"}]}
+
+         {:id 3
+          :email "carlos.perez@example.com"
+          :username "carlosp"
+          :name {:firstname "Carlos"
+                 :lastname "Perez"}
+          :phone "3576543210"
+          :subscriptions [{:name "SPORTS"}
+                          {:name "MOVIES"}]
+          :channels [{:name "PUSH"}]}
+
+         {:id 4
+          :email "emma.smith@example.com"
+          :username "emmas"
+          :name {:firstname "Emma"
+                 :lastname "Smith"}
+          :phone "7654321098"
+          :subscriptions [{:name "FINANCE"}
+                          {:name "MOVIES"}]
+          :channels [{:name "EMAIL"}
+                     {:name "PUSH"}]}
+
+         {:id 5
+          :email "liam.jones@example.com"
+          :username "liamj"
+          :name {:firstname "Liam"
+                 :lastname "Jones"}
+          :phone "5432109876"
+          :subscriptions [{:name "SPORTS"}]
+          :channels [{:name "SMS"}
+                     {:name "PUSH"}]}]}

@@ -1,7 +1,7 @@
 {
   "name": "notify-hub-system",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "test:ci": "vitest run --reporter verbose --reporter=junit --outputFile=./unit-report.xml",
     "preview": "vite preview",
     "lint": "CI=true eslint --ignore-pattern '*.d.ts' --ignore-pattern '*.test.*' --ext ts,tsx --max-warnings 0 src",
-    "prepare": "husky install",
+    "prepare": "cd .. && husky install frontend/.husky",
     "storybook": "storybook dev -p 6006",
     "test-storybook": "pnpm exec test-storybook --watch",
     "build-storybook": "storybook build"
