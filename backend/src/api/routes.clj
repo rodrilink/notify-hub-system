@@ -4,9 +4,9 @@
             [api.handlers :refer :all]))
 
 (defroutes app-routes
-  (POST "/v1/message/notify" [] notify-request)
-  (OPTIONS "/v1/message/notify" [] get-options)
-  (OPTIONS "/v1/message/log" [] get-options)
-  (GET "/v1/message/log" [] get-log-request)
-  (GET "/v1/users" [] get-users-request)
-  (route/not-found "Error, page not found!"))
+  (POST "/api/v1/message" [] send-message)
+  (GET "/api/v1/message/logs" [] get-logs)
+  (GET "/api/v1/users" [] get-users)
+  (OPTIONS "/api/v1/message" [] get-options)
+  (OPTIONS "/api/v1/message/logs" [] get-options)
+  (route/not-found "Page not found!"))

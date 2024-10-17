@@ -3,7 +3,7 @@ import { createBrowserRouter, ScrollRestoration } from "react-router-dom";
 
 import { Layout } from "shared/Layout";
 
-import { homePageLoader } from "./Home/loader";
+import { messagePageLoader } from "./Message/loader";
 
 export const router = createBrowserRouter([
   {
@@ -16,11 +16,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: homePageLoader,
         lazy: () => import("./Home"),
       },
       {
         path: "/message",
+        loader: messagePageLoader,
         lazy: () => import("./Message"),
       },
     ],

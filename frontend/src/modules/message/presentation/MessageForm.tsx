@@ -17,7 +17,7 @@ import { useMessageNotifications } from "./useMessageNotifications";
 import { sendMessage } from "../infrastructure";
 
 export const MessageForm = () => {
-  const [category, setCategory] = useState<string>("sports");
+  const [category, setCategory] = useState<string>("SPORTS");
   const [message, setMessage] = useState<string | undefined>();
   const messageMutation = sendMessage();
 
@@ -60,15 +60,15 @@ export const MessageForm = () => {
             options={[
               {
                 label: "Sports",
-                value: "sports",
+                value: "SPORTS",
               },
               {
                 label: "Finance",
-                value: "finance",
+                value: "FINANCE",
               },
               {
                 label: "Movies",
-                value: "movies",
+                value: "MOVIES",
               },
             ]}
             value={category}

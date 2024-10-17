@@ -1,21 +1,20 @@
 (ns api.util)
 
-(defn log-to-file [filename text]
-  (spit (str "resources/" filename) (str text "\n") :append true))
+(defn log-to-file [text]
+  (let [root-path (str (System/getProperty "user.dir") "/resources/notification-history.log")]
+    (spit (str root-path) (str text "\n") :append true)))
 
-(defn print-and-save [text]
-  (log-to-file "notification-history" text))
 
-(defn log-notification-history [category notification-type user-detail message]
+(defn log-notification-history [channel-type category notification-type id username message]
   (let [time (str (java.time.LocalDateTime/now))
-        log-text (format "%s - %s - Sending %s to %s for user %s, message: %s"
-                         time category notification-type user-detail (:username user-detail) message)]
-    (log-to-file "notification-history.log" log-text)))
+        log-text (format "%s|%s|%s|%s|%s|%s|%s"
+                         time channel-type category notification-type id username message)]
+    (log-to-file log-text)))
 
-(defn filter-users [users-data category]
+(defn users-in-category [users category]
   (try
-  (->> (:users users-data) 
+    (->> (:users users)
          (filter (fn [user]
-                   (some #{category} (:categories user)))))
+                   (some #(= (:name %) category) (:subscriptions user)))))
     (catch Exception e
       (println e))))
