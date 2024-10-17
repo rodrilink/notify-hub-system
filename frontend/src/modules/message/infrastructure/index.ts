@@ -1,7 +1,3 @@
 export { getMessages } from "./getMessages";
 export { sendMessage } from "./sendMessage";
-export {
-  messagesLoader,
-  getMessagesQueryKey,
-  useMessagesQuery,
-} from "./messagesQuery";
+export { useMessagesQuery } from "./messagesQuery";

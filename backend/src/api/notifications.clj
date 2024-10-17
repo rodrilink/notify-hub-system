@@ -1,21 +1,19 @@
 (ns api.notifications
-  (:require [api.util :refer [print-and-save log-notification-history]]))
+  (:require [api.util :refer [log-notification-history]]))
 
-(defn send-notification [user-list category message]
-  (doseq [user user-list]
-    (let [username (:username user)
-          phone (:phone_number user)
+(defn send-notification [users category message]
+  (doseq [user users]
+    (let [phone (:phone user)
           email (:email user)
-          id (:id user)]
-      (doseq [notification (:notification user)]
-        (let [notification-type (:type notification)]
+          id (:id user)
+          username (:username user)]
+      ;; Iterate over the user's channels (SMS, EMAIL, PUSH)
+      (doseq [channel (:channels user)]
+        (let [channel-type (:name channel)]
           (cond
-            (= notification-type "SMS") (do
-                                          (print-and-save (format "Sending SMS to %s for user %s" phone username))
-                                          (log-notification-history category "SMS" phone message))
-            (= notification-type "EMAIL") (do
-                                            (print-and-save (format "Sending EMAIL to %s for user %s" email username))
-                                            (log-notification-history category "EMAIL" email message))
-            (= notification-type "PUSH") (do
-                                           (print-and-save (format "Sending PUSH to %s for user %s" id username))
-                                           (log-notification-history category "PUSH" id message))))))))
+            (= channel-type "SMS") (log-notification-history category channel-type phone id username message)
+            (= channel-type "EMAIL") (log-notification-history category channel-type email id username message)
+            (= channel-type "PUSH") (log-notification-history category channel-type id id username message)))))))
+
+
+

@@ -5,7 +5,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-export const host = import.meta.env.VITE_FAKE_STORE_API_HOST;
+export const host = import.meta.env.VITE_CLOJURE_STORE_API_HOST;
 
 export const httpService = new HttpService(
   new KyClient({ prefixUrl: host, headers })
