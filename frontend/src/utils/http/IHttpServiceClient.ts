@@ -23,4 +23,5 @@ export interface IHttpServiceClient<Options extends IHttpServiceOptions> {
     body?: B,
     options?: Options
   ): Promise<R>;
+  getText(url: string, options?: Options): Promise<string>;
 }

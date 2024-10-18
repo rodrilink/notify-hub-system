@@ -6,12 +6,12 @@ export const useNavItems = () => {
 
 export const NAV_ITEMS: Array<INavItem> = [
   {
-    label: "Notification History",
+    label: "Repository",
     children: [
       {
-        label: "View Logs",
-        subLabel: "Check sent notifications and statuses",
-        href: "/logs",
+        label: "GitHub Repo",
+        subLabel: "View the notify-hub-system repository",
+        href: "https://github.com/rodrilink/notify-hub-system", // Updated link to the repository
       },
     ],
   },

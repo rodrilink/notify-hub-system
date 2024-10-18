@@ -12,13 +12,13 @@ export const useMessageNotifications = () => {
       description: t("Your message has been sent successfully."),
     });
 
-  const failure = () =>
+  const failure = (reason?: string) =>
     toast({
       status: "error",
       title: t("Error"),
-      description: t(
-        "An error occurred while sending your message. Please try again."
-      ),
+      description: reason
+        ? `"An error occurred while sending your message. ${reason}`
+        : t("An error occurred while sending your message. Please try again."),
     });
 
   return [success, failure] as const;

@@ -78,4 +78,8 @@ export class KyClient implements IHttpServiceClient<IKyClientOptions> {
   ): Promise<R> {
     return this.kyInstance.delete(url, { json: body, ...options }).json();
   }
+
+  public getText(url: string, options?: Options): Promise<string> {
+    return this.kyInstance.get(url, options).text();
+  }
 }

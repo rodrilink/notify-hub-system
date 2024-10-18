@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-
+import { ReactNode, useEffect, useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -17,12 +16,24 @@ interface IProps extends TextareaProps {
 }
 
 const TextArea = ({ id, children, isRequired = true, ...props }: IProps) => {
-  const isInvalid = props.value === "";
+  const [isTouched, setIsTouched] = useState(false);
+
+  useEffect(() => {
+    if (props.value === "") {
+      setIsTouched(false); // Reset touched state when form is cleared
+    }
+  }, [props.value]);
+
+  const handleBlur = () => {
+    setIsTouched(true);
+  };
+
+  const isInvalid = isTouched && props.value === "";
 
   return (
     <FormControl id={id} isRequired={isRequired} isInvalid={isInvalid}>
       <FormLabel>{children}</FormLabel>
-      <Textarea {...props} />
+      <Textarea {...props} onBlur={handleBlur} />
       {isInvalid && (
         <FormErrorMessage>{t("Field is required.")}</FormErrorMessage>
       )}

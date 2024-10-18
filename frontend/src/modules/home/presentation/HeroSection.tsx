@@ -55,9 +55,6 @@ const HeroSection = () => {
           >
             Get Started
           </Button>
-          <Button variant="link" colorScheme="blue" size={"sm"}>
-            Learn more
-          </Button>
         </VStack>
       </Stack>
     </Container>
