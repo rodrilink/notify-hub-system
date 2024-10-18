@@ -57,4 +57,4 @@ This will start the backend (Clojure) and the frontend (React) simultaneously.
 If you're evaluating this project:
 
 - Make sure to run the backend and frontend as described above.
-- The project is designed to use an log file, so no setup for the database is required.
+- The project is designed to use a log file, so no setup for the database is required.
