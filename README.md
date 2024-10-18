@@ -58,3 +58,17 @@ If you're evaluating this project:
 
 - Make sure to run the backend and frontend as described above.
 - The project is designed to use a log file, so no setup for the database is required.
+
+### App screenshots
+
+### Message Page (Desktop)
+
+![alt text](message-page.png)
+
+### Home Page (Mobile)
+
+![alt text](home-page.png)
+
+### Notification Logs
+
+![alt text](notification-logs.png)
