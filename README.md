@@ -9,10 +9,6 @@ Welcome to the **Notify Hub System**, a notification management platform that al
 - Simulate sending notifications via SMS, Email, or Push Notifications.
 - View a log of sent notifications, including details and statuses.
 
-## Project Structure
-
-![alt text](folder-structure.png)
-
 ## Installation
 
 ### Backend (Clojure)
@@ -49,17 +45,16 @@ This will start the backend (Clojure) and the frontend (React) simultaneously.
 ### Using the Application
 
 - Message Submission: Go to the homepage, then click on `Get Started` , choose a category (Sports, Finance, Movies), and submit a notification message.
-- View Logs: Navigate to the "Notification History" section to see the logs of all sent notifications.
+- View Logs: Click on the "View Logs" button to open a sidebar to see all the notification logs.
 
 ### Requirements
 
 - Node.js for the frontend.
-- Leiningen or deps.edn for the Clojure backend.
-- Datomic Free (optional) for a local database or use in-memory mode for simplicity.
+- Leiningen for the Clojure backend.
 
 ### Notes for Evaluators
 
 If you're evaluating this project:
 
 - Make sure to run the backend and frontend as described above.
-- The project is designed to use an in-memory database, so no setup for the database is required.
+- The project is designed to use an log file, so no setup for the database is required.
