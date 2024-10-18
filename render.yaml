@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: notify-hub-frontend
+    env: static
+    staticPublishPath: ./frontend/build # Ensure the frontend build is located here
+    buildCommand: cd frontend && pnpm install && pnpm build # Ensure it installs dependencies and builds
+    startCommand: serve -s build -l 3000
+    envVars:
+      - key: VITE_CLOJURE_STORE_API_HOST
+        value: https://notify-hub-backend.onrender.com
+
+  - type: web
+    name: notify-hub-backend
+    env: docker
+    buildCommand: docker build -t notify-hub-system .
+    dockerCommand: java -jar notify-hub-system-0.1.0-SNAPSHOT-standalone.jar
+    healthCheckPath: ""
+    plan: free

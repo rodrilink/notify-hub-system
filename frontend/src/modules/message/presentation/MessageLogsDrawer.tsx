@@ -9,7 +9,7 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import { MessageLogs } from "./MessageLogs"; // Import your NotificationHistory component
+import { MessageLogs } from "./MessageLogs";
 import { useMessagesQuery } from "../infrastructure";
 
 export const MessageLogsDrawer = () => {
@@ -21,8 +21,9 @@ export const MessageLogsDrawer = () => {
       <Button
         onClick={onOpen}
         position="fixed"
-        top="3"
-        right="70"
+        top={{ base: "auto", md: "3" }}
+        bottom={{ base: "3", md: "auto" }}
+        right={{ base: "3", md: "70" }}
         colorScheme="blue"
         zIndex="10"
       >

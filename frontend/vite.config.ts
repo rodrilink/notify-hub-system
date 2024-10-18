@@ -17,6 +17,9 @@ export default defineConfig({
     }),
   ],
   assetsInclude: ["/sb-preview/runtime.js"],
+  build: {
+    outDir: "build", // Change the output directory from 'dist' to 'build'
+  },
   test: {
     globals: true,
     environment: "jsdom",
