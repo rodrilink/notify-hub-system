@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import {
   Box,
   Button,
@@ -7,13 +6,9 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-
 import { t } from "utils";
-
 import { TextArea, Select } from "shared/Form";
-
 import { useMessageNotifications } from "./useMessageNotifications";
-
 import { sendMessage } from "../infrastructure";
 
 export const MessageForm = () => {
@@ -22,6 +17,31 @@ export const MessageForm = () => {
   const messageMutation = sendMessage();
 
   const [notifySuccess, notifyFailure] = useMessageNotifications();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!category || !message) return;
+
+    if (message.includes("|")) {
+      notifyFailure("Invalid character: |");
+      return;
+    }
+
+    await messageMutation.mutateAsync(
+      { category, message },
+      {
+        onSuccess: () => {
+          notifySuccess();
+          setMessage("");
+          setCategory("SPORTS");
+        },
+        onError: () => {
+          notifyFailure();
+        },
+      }
+    );
+  };
 
   return (
     <VStack align="stretch" spacing={8} w="100%" maxW="lg">
@@ -36,40 +56,13 @@ export const MessageForm = () => {
         boxShadow="lg"
         p={{ base: 6, md: 8 }}
       >
-        <VStack
-          as="form"
-          spacing={4}
-          onSubmit={(e) => {
-            e.preventDefault();
-
-            if (!category || !message) {
-              return;
-            }
-
-            messageMutation.mutateAsync(
-              { category, message },
-              {
-                onSuccess: () => notifySuccess(),
-                onError: () => notifyFailure(),
-              }
-            );
-          }}
-        >
+        <VStack as="form" spacing={4} onSubmit={handleSubmit}>
           <Select
             id="method"
             options={[
-              {
-                label: "Sports",
-                value: "SPORTS",
-              },
-              {
-                label: "Finance",
-                value: "FINANCE",
-              },
-              {
-                label: "Movies",
-                value: "MOVIES",
-              },
+              { label: "Sports", value: "SPORTS" },
+              { label: "Finance", value: "FINANCE" },
+              { label: "Movies", value: "MOVIES" },
             ]}
             value={category}
             onChange={(e) => setCategory(e.target.value)}

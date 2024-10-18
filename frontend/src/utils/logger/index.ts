@@ -2,8 +2,6 @@ import { ConsoleLogger } from "./ConsoleLogger";
 import { ILogger, LogEnvironment } from "./ILogger";
 import { StorybookLogger } from "./StorybookLogger";
 
-// todo: HttpLogger
-// todo: MockLogger
 const HttpLogger = ConsoleLogger;
 
 const loggers = {
@@ -68,3 +66,5 @@ export class Logger {
     }
   }
 }
+
+export * from "./utils";

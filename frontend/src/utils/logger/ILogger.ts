@@ -1,4 +1,3 @@
-// should be https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels/2031209#2031209?
 export enum LogLevel {
   Error = "error",
   Warning = "warning",

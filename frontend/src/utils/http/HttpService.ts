@@ -50,4 +50,8 @@ export class HttpService<Options extends IHttpServiceOptions>
   private configure(customOptions?: Options): Options {
     return Object.assign(this.client.options, customOptions);
   }
+
+  public getText(url: string, options?: Options): Promise<string> {
+    return this.client.getText(url, this.configure(options));
+  }
 }
