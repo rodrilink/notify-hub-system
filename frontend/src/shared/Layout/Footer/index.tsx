@@ -19,21 +19,12 @@ export const Footer = () => {
           templateColumns={{ sm: "1fr", md: "2fr 3fr 1fr 1fr 1fr" }}
           spacing={8}
         >
-          <Stack spacing={3}>
+          <Stack spacing={4}>
             <Box>
               <Logo />
             </Box>
             <Text fontSize="sm">
               © {new Date().getFullYear()} Notification Test.
-            </Text>
-          </Stack>
-
-          {/* Additional Column for Thank You message */}
-          <Stack spacing={44} align="flex-end">
-            <Text fontSize="sm" fontStyle="italic">
-              Thank you for the opportunity to participate in this position. I
-              look forward to the possibility of contributing to your team and
-              continuing to grow professionally.
             </Text>
           </Stack>
         </SimpleGrid>
