@@ -12,10 +12,10 @@ RUN lein deps
 RUN lein uberjar
 
 # Final stage for the backend
-FROM openjdk:11-jre-slim
+FROM eclipse-temurin:11-jre-alpine
 
 # Install Tini for process management
-RUN apt-get update && apt-get install -y tini
+RUN apk add --no-cache tini
 
 # Set the working directory to /app
 WORKDIR /app
@@ -28,5 +28,5 @@ COPY --from=backend /app/backend/resources /app/resources
 EXPOSE 8000
 
 # Run the backend service
-ENTRYPOINT ["/usr/bin/tini", "--"]
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["java", "-jar", "notify-hub-system-0.1.0-SNAPSHOT-standalone.jar"]
